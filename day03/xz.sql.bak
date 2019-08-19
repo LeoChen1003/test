@@ -1,0 +1,30 @@
+#设置客户端连接服务器的编码
+SET NAMES UTF8;
+DROP DATABASE IF EXISTS xz;
+CREATE DATABASE xz CHARSET=UTF8;
+USE xz;
+CREATE TABLE laptop_family(
+	fid SMALLINT PRIMARY KEY,
+	fname VARCHAR(8),
+	laptopCount INT DEFAULT 1
+);
+INSERT INTO laptop_family VALUES(10,'联想',DEFAULT);
+INSERT INTO laptop_family VALUES(20,'戴尔',2);
+INSERT INTO laptop_family VALUES(30,'小米',3);
+INSERT INTO laptop_family(fid,fname) VALUES(40,'华硕');
+CREATE TABLE laptop(
+	lid INT PRIMARY KEY AUTO_INCREMENT,
+	title VARCHAR(128) UNIQUE,
+	price DECIMAL(7,2) NOT NULL DEFAULT 3000,
+	spec VARCHAR(32),
+	detail VARCHAR(3000),
+	shelfTime DATE,
+	isOlsale BOOL,
+	familyId SMALLINT,
+	FOREIGN KEY(familyId) REFERENCES laptop_family(fid)
+);
+INSERT INTO laptop VALUES(1,'小米Air',3999,'游戏本','详情1','2018-12-1',1,30);
+INSERT INTO laptop VALUES(2,'戴尔灵越1400',DEFAULT,'开发本','详情2','2019-1-1',1,20);
+INSERT INTO laptop VALUES(3,'ThinkPadE470',3299,'开发本','详情3','2017-5-1',0,10);
+INSERT INTO laptop(lid,title) VALUES(8,'联想小新');
+INSERT INTO laptop VALUES(4,'ThinkPadE480',3299,'开发本','详情3','2017-5-1',0,40);

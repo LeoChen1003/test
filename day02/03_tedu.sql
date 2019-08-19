@@ -1,0 +1,22 @@
+SET NAMES UTF8;
+DROP DATABASE IF EXISTS tedu;
+CREATE DATABASE tedu CHARSET=UTF8;
+USE tedu;
+CREATE TABLE dept(
+	did INT PRIMARY KEY,
+	dname VARCHAR(6),
+	empCount SMALLINT
+);
+INSERT INTO dept VALUES(10,'研发部',3);
+INSERT INTO dept VALUES(20,'市场部',2);
+INSERT INTO dept VALUES(30,'运营部',2);
+CREATE TABLE emp(
+	eid INT,
+	ename VARCHAR(4),
+	sex CHAR(1),
+	birthday DATE,
+	salary INT
+);
+INSERT INTO emp VALUES(1,'陈立农','男','2000-10-03',10000);
+INSERT INTO emp VALUES(2,'林彦俊','男','1995-08-25',10000);
+INSERT INTO emp VALUES(3,'郑爽','女','1991-08-22',9000);
